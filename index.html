@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <title>Principal</title>
+</head>
+<body style="background-color: rgb(163, 8, 60);">
+    <div id="contador">
+        <h1>Estamos juntos há: </h1>
+        <div id="tempo"> Carregando...</div>
+    </div>
+    <main class="galeria">
+        <div class="mes">
+            <div class="foto">
+                <a href="meses/1.html"><img src="imgs/maio 25/IMG-20250518-WA0020.jpg" class="imagem"></a>
+                <p class="legenda">17.05.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/2.html"><img src="imgs/junho 25/IMG-20250615-WA0016.jpg" id="extra"></a>
+                <p class="legenda">17.06.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/3.html"><img src="imgs/julho 25/IMG-20250717-WA0060.jpg" class="imagem"></a>
+                <p class="legenda">17.07.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/4.html"><img src="imgs/agosto 25/IMG-20250802-WA0084.jpg" class="imagem"></a>
+                <p class="legenda">17.08.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/5.html"><img src="imgs/setembro 25/IMG-20250907-WA0021.jpg" class="imagem"></a>
+                <p class="legenda">17.09.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/6.html"><img src="imgs/outubro 25/IMG-20251011-WA0046.jpg" class="imagem"></a>
+                <p class="legenda">17.10.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/7.html"><img src="imgs/novembro 25/IMG-20251109-WA0006.jpg" class="imagem"></a>
+                <p class="legenda">17.11.2025</p>
+            </div>
+        </div>
+
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/8.html"><img src="imgs/dezembro 25/IMG-20260101-WA0059.jpg" class="imagem"></a>
+                <p class="legenda">17.12.2025</p>
+            </div>
+        </div>
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/9.html"><img src="imgs/janeiro 26/IMG-20260104-WA0108.jpg" class="imagem"></a>
+                <p class="legenda">17.01.2026</p>
+            </div>
+        </div>
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/10.html"><img src="imgs/fevereiro 26/IMG-20260217-WA0017.jpg" class="imagem"></a>
+                <p class="legenda">17.02.2026</p>
+            </div>
+        </div>
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/11.html"><img src="imgs/março 26/IMG-20260310-WA0022.jpg" class="imagem"></a>
+                <p class="legenda">17.03.2026</p>
+            </div>
+        </div>
+         <div class="mes">
+            <div class="foto">
+                <a href="meses/12.html"><img src="imgs/abril 26/IMG-20260418-WA0083.jpg" class="imagem"></a>
+                <p class="legenda">17.04.2026</p>
+            </div>
+        </div>
+
+        
+    </main>
+    
+<script>
+
+    const elementos = document.querySelectorAll('.mes');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visivel');
+            }
+        });
+    }, {
+        threshold: 0.1 // dispara quando 10% do elemento aparece na tela
+    });
+
+    elementos.forEach(el => observer.observe(el));
+
+    const dataInicio = new Date(2025, 4, 17, 0, 0, 0); 
+
+    function atualizarCronometro() {
+        const agora = new Date();
+        const diferenca = agora - dataInicio;
+
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferenca / 1000 / 60) % 60);
+        const segundos = Math.floor((diferenca / 1000) % 60);
+
+        document.getElementById("tempo").innerHTML = 
+            dias + " dias, " + horas + "h " + minutos + "m " + segundos + "s";
+    }
+
+    setInterval(atualizarCronometro, 1000);
+    atualizarCronometro();
+</script>
+</body>
+</html>
